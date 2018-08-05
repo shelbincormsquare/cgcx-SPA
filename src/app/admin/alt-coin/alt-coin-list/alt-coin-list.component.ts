@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+import { AltCoin } from './../../../_shared/models/alt-coin.model';
+import { AltCoinService } from './../../../_shared/services/alt-coin.service';
+
 @Component({
   selector: 'app-alt-coin-list',
   templateUrl: './alt-coin-list.component.html',
@@ -7,9 +10,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AltCoinListComponent implements OnInit {
 
-  constructor() { }
+  public altCoins: AltCoin[];
 
-  ngOnInit() {
+  constructor(private altCoinService: AltCoinService) {
   }
 
+  ngOnInit() {
+    this.altCoins = this.altCoinService.getAltCoins();
+  }
 }
