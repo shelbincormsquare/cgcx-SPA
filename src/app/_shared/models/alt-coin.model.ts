@@ -3,6 +3,6 @@ export interface AltCoin {
     name: string;
     symbol: string;
     last: number;
-    enabledForVoting: boolean;
-    enabledForTrading: boolean;
+    enableForVoting: boolean;
+    enableForTrading: boolean;
 }

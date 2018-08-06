@@ -51,8 +51,8 @@ export class AltCoinEditorComponent implements OnInit {
         name: altcoin.name,
         symbol: altcoin.symbol,
         last: altcoin.last,
-        enabledForVoting: altcoin.enabledForVoting,
-        enabledForTrading: altcoin.enabledForTrading
+        enabledForVoting: altcoin.enableForVoting,
+        enabledForTrading: altcoin.enableForTrading
       });
     }
   }

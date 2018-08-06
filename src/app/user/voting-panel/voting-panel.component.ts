@@ -1,0 +1,37 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
+import { AltCoin } from './../../_shared/models/alt-coin.model';
+import { AltCoinService } from './../../_shared/services/alt-coin.service';
+
+@Component({
+  selector: 'app-voting-panel',
+  templateUrl: './voting-panel.component.html',
+  styleUrls: ['./voting-panel.component.css']
+})
+export class VotingPanelComponent implements OnInit {
+
+  tokenStringForm: FormGroup;
+  activeAltCoins: AltCoin[];
+  constructor(private fb: FormBuilder, private altCoinService: AltCoinService) { }
+
+  ngOnInit() {
+    this.initForm();
+    this.activeAltCoins = this.altCoinService.getActiveAltCoins();
+  }
+
+  private initForm() {
+    this.tokenStringForm = this.fb.group({
+      tokenString: ['', Validators.required]
+    });
+  }
+
+  verifyTokenString() {
+    console.log(this.tokenStringForm.value);
+  }
+
+  submitVote() {
+    console.log('ss');
+    console.log(this.activeAltCoins);
+  }
+}
