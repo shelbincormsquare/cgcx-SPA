@@ -13,12 +13,12 @@ export class AltCoinService {
     {
       id: 11, name: 'Mr. Nice', symbol: 'symbol', last: 122,
       enableForTrading: true, enableForVoting: true,
-      asOfNowVoteCount: 0, coinImage: ''
+      asOfNowVoteCount: 0, coinImage: '', isVoted: true
     },
     {
       id: 12, name: 'Mr. Nice', symbol: 'symbol', last: 1,
       enableForTrading: true, enableForVoting: true,
-      asOfNowVoteCount: 12, coinImage: ''
+      asOfNowVoteCount: 12, coinImage: '', isVoted: false
     }
   ];
   private apiUrl: string = environment.apiUrl;
@@ -38,12 +38,12 @@ export class AltCoinService {
     return this.altCoins.find(a => a.id === id);
   }
 
-  getActiveAltCoins(): AltCoin[] {
-    return this.altCoins;
+  getVoteEnabledAltCoins(): Observable<any> {
+    return this.httpClient.get(this.apiUrl + 'bclvtng/admin/bl/getAltCoins');
   }
 
-  getAltCoins(): Observable<any>  {
-    return this.httpClient.get<AltCoin[]>(this.apiUrl + 'bclvtng/admin/bl/getAltCoins');
+  getAltCoins(): Observable<any> {
+    return this.httpClient.get(this.apiUrl + 'bclvtng/admin/bl/getAltCoins');
   }
 
   createAltCoin(altCoin: AltCoin) {
