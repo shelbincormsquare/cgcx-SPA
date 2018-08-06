@@ -2,8 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { HttpClientModule } from '@angular/common/http';
 import { BsDropdownModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
@@ -37,6 +37,7 @@ import { AltCoinListComponent } from './admin/alt-coin/alt-coin-list/alt-coin-li
     ],
     imports: [
         BrowserModule,
+        HttpClientModule,
         HttpClientModule,
         FormsModule,
         ReactiveFormsModule,
