@@ -5,4 +5,6 @@ export interface AltCoin {
     last: number;
     enableForVoting: boolean;
     enableForTrading: boolean;
+    asOfNowVoteCount: number;
+    coinImage: string;
 }
