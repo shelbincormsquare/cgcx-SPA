@@ -1,5 +1,8 @@
+import { environment } from './../../../environments/environment';
 import { AltCoin } from './../models/alt-coin.model';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,28 +11,48 @@ export class AltCoinService {
 
   altCoins: AltCoin[] = [
     {
+<<<<<<< HEAD
       id: 11, name: 'Mr. Nice', symbol: 'symbol', last: 122, enableForTrading: true, enableForVoting: true,
       asOfNowVoteCount: 1, coinImage: ''
     },
     {
       id: 12, name: 'Mr. Nice', symbol: 'symbol', last: 1, enableForTrading: true, enableForVoting: true,
       asOfNowVoteCount: 1, coinImage: ''
+=======
+      id: 11, name: 'Mr. Nice', symbol: 'symbol', last: 122,
+      enableForTrading: true, enableForVoting: true,
+      asOfNowVoteCount: 0, coinImage: '', isVoted: true
+    },
+    {
+      id: 12, name: 'Mr. Nice', symbol: 'symbol', last: 1,
+      enableForTrading: true, enableForVoting: true,
+      asOfNowVoteCount: 12, coinImage: '', isVoted: false
+>>>>>>> 1b21a8b0d9bacfa4407b14aa5ee7cf84c0a31bee
     }
   ];
+  private apiUrl: string = environment.apiUrl;
 
-  constructor() {
-  }
+  constructor(private httpClient: HttpClient) { }
+
+  // create(accountingCode: AccountingCode): Observable<any> {
+  //   return this.httpClient.post(this.apiUrl + 'AccountingCodes/Create', accountingCode);
+  // }
+
+  // list(): Observable<AccountingCode[]> {
+  //   return this.httpClient.get<AccountingCode[]>(this.apiUrl + 'AccountingCodes/List');
+  //   // return this.httpClient.get<AccountingCode[]>(this.apiUrl + 'BuyerOrgLocations/Test2');
+  // }
 
   getAltCoinById(id: number): AltCoin {
     return this.altCoins.find(a => a.id === id);
   }
 
-  getAltCoins(): AltCoin[] {
-    return this.altCoins;
+  getVoteEnabledAltCoins(): Observable<any> {
+    return this.httpClient.get(this.apiUrl + 'bclvtng/admin/bl/getAltCoins');
   }
 
-  getActiveAltCoins(): AltCoin[] {
-    return this.altCoins.filter(a => a.enableForVoting === true);
+  getAltCoins(): Observable<any> {
+    return this.httpClient.get(this.apiUrl + 'bclvtng/admin/bl/getAltCoins');
   }
 
   createAltCoin(altCoin: AltCoin) {

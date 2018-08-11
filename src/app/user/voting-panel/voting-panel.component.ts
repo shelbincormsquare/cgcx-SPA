@@ -17,7 +17,13 @@ export class VotingPanelComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
-    this.activeAltCoins = this.altCoinService.getActiveAltCoins();
+    this.altCoinService.getVoteEnabledAltCoins().subscribe(res => {
+      console.log(res);
+      this.activeAltCoins = res.data;
+    }, error => {
+      console.log(error);
+    }
+    );
   }
 
   private initForm() {
@@ -30,8 +36,7 @@ export class VotingPanelComponent implements OnInit {
     console.log(this.tokenStringForm.value);
   }
 
-  submitVote() {
-    console.log('ss');
-    console.log(this.activeAltCoins);
+  voteAltCoin(altCoinId: number) {
+    console.log(altCoinId);
   }
 }

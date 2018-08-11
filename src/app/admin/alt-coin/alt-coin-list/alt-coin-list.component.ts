@@ -16,6 +16,16 @@ export class AltCoinListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.altCoins = this.altCoinService.getAltCoins();
+    this.getAltCoins();
+  }
+
+  getAltCoins() {
+    this.altCoinService.getAltCoins().subscribe(res => {
+      console.log(res);
+      this.altCoins = res.data;
+    }, error => {
+      console.log(error);
+    }
+    );
   }
 }

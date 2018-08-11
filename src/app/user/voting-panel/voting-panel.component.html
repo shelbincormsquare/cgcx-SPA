@@ -7,28 +7,20 @@
 </form>
 
 <hr/>
-<div>
-  <form #f="ngForm">
 
-    <table class='table' (ngSubmit)="submitVote()" *ngIf="activeAltCoins">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let altCoins of activeAltCoins">
-          <td>{{ altCoins.name }}</td>
-          <td>
-            <input type="checkbox" [(ngModel)]="altCoins.isChecked" [name]="altCoins.id">
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button type="submit" class="btn btn-primary">Submit Vote</button>
-
-  </form>
-  <div>Form details:-</div>
-  <pre *ngIf="f.submitted">submitted value: <br>{{activeAltCoins | json}}</pre>
-</div>
+<table class='table' *ngIf="activeAltCoins">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let altCoin of activeAltCoins">
+      <td>{{ altCoin.name }}</td>
+      <td>
+        <input type="button" value="Vote" (click)="voteAltCoin(7);" />
+      </td>
+    </tr>
+  </tbody>
+</table>

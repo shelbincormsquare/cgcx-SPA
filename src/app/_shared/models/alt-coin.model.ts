@@ -7,4 +7,6 @@ export interface AltCoin {
     enableForTrading: boolean;
     asOfNowVoteCount: number;
     coinImage: string;
+
+    isVoted: boolean;
 }
