@@ -7,8 +7,14 @@ import { Injectable } from '@angular/core';
 export class AltCoinService {
 
   altCoins: AltCoin[] = [
-    { id: 11, name: 'Mr. Nice', symbol: 'symbol', last: 122, enableForTrading: true, enableForVoting: true },
-    { id: 12, name: 'Mr. Nice', symbol: 'symbol', last: 1, enableForTrading: true, enableForVoting: true }
+    {
+      id: 11, name: 'Mr. Nice', symbol: 'symbol', last: 122, enableForTrading: true, enableForVoting: true,
+      asOfNowVoteCount: 1, coinImage: ''
+    },
+    {
+      id: 12, name: 'Mr. Nice', symbol: 'symbol', last: 1, enableForTrading: true, enableForVoting: true,
+      asOfNowVoteCount: 1, coinImage: ''
+    }
   ];
 
   constructor() {
